@@ -19,19 +19,20 @@
 
             foreach($pessoas as $cpf_p => $dados) {
 
-                fputs($fp, "$cpf_p\n");
-
+                fputs($fp, verifyEnter($cpf_p));
+                
                 $linha = $dados[0]."#".$dados[1]."#".$dados[2];
                 
-                fputs($fp, "$linha\n");
+                fputs($fp, verifyEnter($linha));
             }
-            
+
+            echo "<script>alert('Cadastro efetuado com sucesso!!')</script>";
+
         } else {
             echo "<script>alert('SUBMIT - ERROR')</script>";
         }
         
         fclose($fp);
-
     }
 
     function read() {
@@ -53,6 +54,23 @@
 
             fclose($fp);
             return $pessoas;
+        }
+    }
+
+    function delete($chave) {
+
+        // $pessoas = read();
+        
+        echo $chave;
+        // if(array_search($pessoas))
+    }
+
+
+    function verifyEnter($var) {
+        if(str_contains($var, "\n")) {
+            return $var;
+        } else {
+            return $var .= "\n";
         }
     }
 

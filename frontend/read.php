@@ -1,5 +1,17 @@
 <?php
+
+    ini_set('display_errors', 1);
+
     include_once('../backend/html_build.php');
+    include_once('../backend/file_manager.php');
+
+    if(!empty($_GET['action'])) {
+        $action = $_GET['action'];
+        $chave = $_GET['chave'];
+
+    } else {
+        echo 'NAAAO TEEEM';
+    }
 ?>
 
 <!DOCTYPE html>

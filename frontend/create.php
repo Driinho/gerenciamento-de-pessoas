@@ -5,6 +5,7 @@
 
     if( !empty($_POST['form_submit']) ) {
         create();
+        header("Location: read.php");
     }
 
 ?>
