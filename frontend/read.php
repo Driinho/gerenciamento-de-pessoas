@@ -15,8 +15,6 @@
 
         header("Location: ../index.php");
 
-    } else {
-        echo 'NAAAO TEEEM';
     }
 ?>
 

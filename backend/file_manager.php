@@ -7,9 +7,27 @@
             $nome = $_POST['nome'];
             $ender = $_POST['ender'];
             $tel = $_POST['tel'];
-            
             $arr = array($nome, $ender, $tel);
-            
+    
+            $pessoas[$cpf] = $arr;
+        } else if($_POST['cpf-edit']) {
+            $cpf = $_POST['cpf-edit'];
+            $nome = $_POST['nome'];
+            $ender = $_POST['ender'];
+            $tel = $_POST['tel'];
+            $arr = array($nome, $ender, $tel);
+    
+            $pessoas[$cpf] = $arr;
+        }
+
+
+        if(isset($_POST['cpf-edit'])) {
+            $nome = $_POST['nome'];
+            $ender = $_POST['ender'];
+            $tel = $_POST['tel'];
+
+            $arr = array($nome, $ender, $tel);
+
             $pessoas[$cpf] = $arr;
         }
 
@@ -63,5 +81,11 @@
 
         create($pessoas);
         
+    }
+
+    function findyPessoa($chave) {
+        $pessoas = read();
+
+        return $pessoas[$chave];
     }
 ?>

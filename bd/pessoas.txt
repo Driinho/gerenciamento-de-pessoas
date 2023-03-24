@@ -3,6 +3,4 @@ Gil Eduardo#Av. Oswald de Andrade, 411#(41)9902-8921
 000.000.000-01
 Maria Claudia#Rua Tenório Cardoso, 1002#(41)3422-9543
 000.000.000-02
-Pedro#Rua Jailson Rodrigues, 002#(41) 4002-8922
-135.154.645-16
-Teste#Rua Teste, 032#(41) 6541-6541
+Pedro Nascimento#Rua Jailson Rodrigues, 002#(41) 4002-8922

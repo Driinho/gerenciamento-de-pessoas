@@ -39,7 +39,14 @@
                             type="text"
                             class="form-control cpf-mask"
                             name="cpf"
+                            <?php 
+                                if(isset($_GET['action'])) {
+                                    echo 'disabled="true"';
+                                    echo 'value="'.$_GET['chave'].'"';
+                                }
+                            ?>
                         />
+                        <input TYPE="hidden" NAME="cpf-edit" VALUE="<?php echo $_GET['chave']?>">
                         <label for="cpf">Cpf</label>
                     </div>
                 </div>
@@ -51,6 +58,13 @@
                             type="text"
                             class="form-control"
                             name="nome"
+                            <?php 
+                                if(isset($_GET['action'])) {
+                                    $pessoa = findyPessoa($_GET['chave']);
+                                    
+                                    echo 'value="'.$pessoa[0].'"';
+                                }
+                            ?>
                         />
                         <label for="nome">Nome</label>
                     </div>
@@ -63,6 +77,13 @@
                             type="text"
                             class="form-control"
                             name="ender"
+                            <?php 
+                                if(isset($_GET['action'])) {
+                                    $pessoa = findyPessoa($_GET['chave']);
+                                    
+                                    echo 'value="'.$pessoa[1].'"';
+                                }
+                            ?>
                         />
                         <label for="nome">Endereço</label>
                     </div>
@@ -75,6 +96,13 @@
                             type="text"
                             class="form-control"
                             name="tel"
+                            <?php 
+                                if(isset($_GET['action'])) {
+                                    $pessoa = findyPessoa($_GET['chave']);
+                                    
+                                    echo 'value="'.$pessoa[2].'"';
+                                }
+                            ?>
                         />
                         <label for="nome">Telefone</label>
                     </div>
