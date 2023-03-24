@@ -9,6 +9,12 @@
         $action = $_GET['action'];
         $chave = $_GET['chave'];
 
+        if(strcmp($action, "delete") == 0) {
+            delete($chave);
+        }
+
+        header("Location: ../index.php");
+
     } else {
         echo 'NAAAO TEEEM';
     }

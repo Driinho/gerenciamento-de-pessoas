@@ -1,17 +1,17 @@
 <?php
 
-    function create() {
+    function create($pessoas) {
 
-        $pessoas = read();
-
-        $cpf = $_POST['cpf'];
-        $nome = $_POST['nome'];
-        $ender = $_POST['ender'];
-        $tel = $_POST['tel'];
-
-        $arr = array($nome, $ender, $tel);
-
-        $pessoas[$cpf] = $arr;
+        if(isset($_POST['cpf'])) {
+            $cpf = $_POST['cpf'];
+            $nome = $_POST['nome'];
+            $ender = $_POST['ender'];
+            $tel = $_POST['tel'];
+            
+            $arr = array($nome, $ender, $tel);
+            
+            $pessoas[$cpf] = $arr;
+        }
 
         $fp = fopen('../bd/pessoas.txt', "w");
 
@@ -19,14 +19,12 @@
 
             foreach($pessoas as $cpf_p => $dados) {
 
-                fputs($fp, verifyEnter($cpf_p));
+                fputs($fp, "$cpf_p\n");
                 
                 $linha = $dados[0]."#".$dados[1]."#".$dados[2];
                 
-                fputs($fp, verifyEnter($linha));
+                fputs($fp, "$linha\n");
             }
-
-            echo "<script>alert('Cadastro efetuado com sucesso!!')</script>";
 
         } else {
             echo "<script>alert('SUBMIT - ERROR')</script>";
@@ -44,8 +42,8 @@
 
             while(!feof($fp)) {
                 $arr = array();
-                $cpf = fgets($fp);
-                $dados = fgets($fp);
+                $cpf = str_replace("\n", "", fgets($fp));
+                $dados = str_replace("\n", "", fgets($fp));
                 if(!empty($dados)) {
                     $arr = explode("#", $dados);
                     $pessoas[$cpf] = $arr;
@@ -59,19 +57,11 @@
 
     function delete($chave) {
 
-        // $pessoas = read();
+        $pessoas = read();
+
+        unset($pessoas[$chave]);
+
+        create($pessoas);
         
-        echo $chave;
-        // if(array_search($pessoas))
     }
-
-
-    function verifyEnter($var) {
-        if(str_contains($var, "\n")) {
-            return $var;
-        } else {
-            return $var .= "\n";
-        }
-    }
-
 ?>
